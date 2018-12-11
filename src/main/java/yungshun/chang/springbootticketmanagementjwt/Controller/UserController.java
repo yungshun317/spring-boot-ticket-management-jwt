@@ -14,18 +14,18 @@ import java.util.Map;
 public class UserController {
 
     @Autowired
-    UserService userSevice;
+    UserService userService;
 
     @ResponseBody
     @RequestMapping("")
     public List<User> getAllUsers() {
-        return userSevice.getAllUsers();
+        return userService.getAllUsers();
     }
 
     @ResponseBody
     @RequestMapping("/{id}")
     public User getUser(@PathVariable("id") Integer id) {
-        return userSevice.getUser(id);
+        return userService.getUser(id);
     }
 
     @ResponseBody
@@ -33,7 +33,7 @@ public class UserController {
     public Map<String, Object> createUser(@RequestParam(value = "userid") Integer userid,
                                           @RequestParam(value = "username") String username) {
         Map<String, Object> map = new LinkedHashMap<>();
-        userSevice.createUser(userid, username);
+        userService.createUser(userid, username);
         map.put("result", "added");
         return map;
     }
@@ -43,7 +43,7 @@ public class UserController {
     public Map<String, Object> updateUser(@RequestParam(value = "userid") Integer userid,
                                           @RequestParam(value = "username") String username) {
         Map<String, Object> map = new LinkedHashMap<>();
-        userSevice.updateUser(userid, username);
+        userService.updateUser(userid, username);
         map.put("result", "updated");
         return map;
     }
@@ -53,7 +53,7 @@ public class UserController {
     public Map<String, Object> deleteUser(
             @PathVariable("id") Integer userid) {
         Map<String, Object> map = new LinkedHashMap<>();
-        userSevice.deleteUser(userid);
+        userService.deleteUser(userid);
         map.put("result", "deleted");
         return map;
     }
